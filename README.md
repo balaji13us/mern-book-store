@@ -1,10 +1,9 @@
-# Securing MERN Stack Web Application using Passport
+# Secured MERN Stack Web Application
 
-This source code is part of [Securing MERN Stack Web Application using Passport](https://www.djamware.com/post/5a90c37980aca7059c14297a/securing-mern-stack-web-application-using-passport) tutorial.
+This source code is a Sample Online Book Store using MERN Stack
 
 To run this source code:
 
 * Clone this repo
 * Run MongoDB server
-* Run `npm npm run-script build`
 * Run `npm start`
