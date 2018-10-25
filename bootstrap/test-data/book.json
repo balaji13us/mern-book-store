@@ -1,0 +1,80 @@
+[
+    {
+      "id": "44296bdc-3478-4c4b-b340-c368708a3f42",
+      "isbn": "2507653, 95607113",
+      "title": "Swanson Thornton",
+      "author": "Leonor Morrow",
+      "description": "veniam ut ut culpa non eu dolore tempor amet ea minim et voluptate consectetur laborum",
+      "publisher": "WAAB",
+      "published_date": "14-08-2002 04:21:55:964+00:00",
+      "updated_date": "25-10-2018 04:56:27:974+00:00",
+      "category": "Novel",
+      "genre": "Thriller",
+      "productDimension": "8L 9H 2W"
+    },
+    {
+      "id": "e94ba89b-05c2-4386-a115-7ed0d1fd7a7c",
+      "isbn": "42477024, 27422490",
+      "title": "Sears Bryan",
+      "author": "Ruth Vazquez",
+      "description": "pariatur ullamco sit cillum officia officia sint aute ullamco sit mollit sit qui elit occaecat",
+      "publisher": "GOLOGY",
+      "published_date": "17-01-1999 09:26:43:926+00:00",
+      "updated_date": "25-10-2018 04:56:27:976+00:00",
+      "category": "Novel",
+      "genre": "Romantic",
+      "productDimension": "1L 8H 3W"
+    },
+    {
+      "id": "9ddc05cd-12b0-47ac-90a7-60a98836bb39",
+      "isbn": "44985090, 65879449",
+      "title": "Dolly Parker",
+      "author": "Schmidt Haney",
+      "description": "cupidatat aute enim veniam esse eu fugiat fugiat voluptate et cillum officia fugiat ut non",
+      "publisher": "AQUAZURE",
+      "published_date": "13-07-1985 09:32:07:703+00:00",
+      "updated_date": "25-10-2018 04:56:27:976+00:00",
+      "category": "Novel",
+      "genre": "Romantic",
+      "productDimension": "5L 9H 2W"
+    },
+    {
+      "id": "cd223463-f535-41a3-9ba9-a6dadc777393",
+      "isbn": "219669, 45800676",
+      "title": "Spence Figueroa",
+      "author": "Bryan Gallagher",
+      "description": "laborum reprehenderit Lorem velit anim laboris magna sunt pariatur laborum deserunt quis est sit aliquip",
+      "publisher": "ACRODANCE",
+      "published_date": "11-08-1971 13:24:11:897+00:00",
+      "updated_date": "25-10-2018 04:56:27:976+00:00",
+      "category": "Novel",
+      "genre": "Romantic",
+      "productDimension": "4L 10H 1W"
+    },
+    {
+      "id": "07d34ec5-f76d-4d7c-9650-a40a3d8daafb",
+      "isbn": "26997953, 55936980",
+      "title": "Bartlett Holmes",
+      "author": "Huff Potter",
+      "description": "incididunt excepteur cillum qui magna ipsum sunt laboris laboris sint nisi id consequat dolore do",
+      "publisher": "NORALEX",
+      "published_date": "31-05-2001 08:39:40:277+00:00",
+      "updated_date": "25-10-2018 04:56:27:977+00:00",
+      "category": "Comic",
+      "genre": "Romantic",
+      "productDimension": "6L 1H 3W"
+    },
+    {
+      "id": "8bf72780-e9b8-4cd4-b84a-62d63dad54b6",
+      "isbn": "66076171, 75321704",
+      "title": "Barnett Watkins",
+      "author": "Holcomb Vasquez",
+      "description": "quis minim tempor elit nisi consequat consequat sit fugiat irure sit irure aute aliqua dolore",
+      "publisher": "EARBANG",
+      "published_date": "25-11-1995 13:29:14:450+00:00",
+      "updated_date": "25-10-2018 04:56:27:977+00:00",
+      "category": "Comic",
+      "genre": "Thriller",
+      "productDimension": "1L 5H 2W"
+    }
+  ]

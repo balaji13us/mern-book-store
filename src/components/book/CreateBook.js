@@ -29,7 +29,15 @@ class Create extends Component {
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
     axios.post('/api/book', { isbn, title, author, description, published_date, publisher })
       .then((result) => {
-        this.props.history.push("/")
+        this.props.history.push("/book/listBooks")
+      })
+      .catch((error) => {
+        if(error.response.status === 401) {
+          this.props.history.push("/login");
+        }
+        else{
+          console.log(JSON.stringify(error.response));
+        }
       });
   }
 
@@ -44,7 +52,7 @@ class Create extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to="/"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Book List</Link></h4>
+            <h4><Link to="/book/listBooks"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Book List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="isbn">ISBN:</label>

@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
+var UUID = require('uuid');
 
 var BookSchema = new mongoose.Schema({
-  id: String,
+  id: { type: String, default: UUID.v4 },
   isbn: String,
   title: String,
   author: String,

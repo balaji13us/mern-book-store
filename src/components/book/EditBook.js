@@ -33,7 +33,15 @@ class Edit extends Component {
 
     axios.put('/api/book/'+this.props.match.params.id, { isbn, title, author, description, published_date, publisher })
       .then((result) => {
-        this.props.history.push("/show/"+this.props.match.params.id)
+        this.props.history.push("/book/show/"+this.props.match.params.id)
+      })
+      .catch((error) => {
+        if(error.response.status === 401) {
+          this.props.history.push("/login");
+        }
+        else{
+          console.log(JSON.stringify(error.response));
+        }
       });
   }
 
@@ -47,7 +55,7 @@ class Edit extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to={`/show/${this.state.book._id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Book List</Link></h4>
+            <h4><Link to={`/book/show/${this.state.book._id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Book List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="isbn">ISBN:</label>

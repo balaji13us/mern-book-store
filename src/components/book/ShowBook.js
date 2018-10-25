@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import ListReviews from '../review/ListReviews'
 class Show extends Component {
 
   constructor(props) {
@@ -17,6 +17,14 @@ class Show extends Component {
       .then(res => {
         this.setState({ book: res.data });
         console.log(this.state.book);
+      })
+      .catch((error) => {
+        if(error.response.status === 401) {
+          this.props.history.push("/login");
+        }
+        else{
+          console.log(JSON.stringify(error.response));
+        }
       });
   }
 
@@ -24,7 +32,7 @@ class Show extends Component {
     console.log(id);
     axios.delete('/api/book/'+id)
       .then((result) => {
-        this.props.history.push("/")
+        this.props.history.push("/book/listBooks")
       });
   }
 
@@ -38,7 +46,12 @@ class Show extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to="/"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Book List</Link></h4>
+            <h4>
+              <Link to="/book/listBooks/">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true">
+                </span> Book List
+              </Link>
+            </h4>
             <dl>
               <dt>ISBN:</dt>
               <dd>{this.state.book.isbn}</dd>
@@ -51,10 +64,22 @@ class Show extends Component {
               <dt>Publisher:</dt>
               <dd>{this.state.book.publisher}</dd>
             </dl>
-            <Link to={`/edit/${this.state.book._id}`} class="btn btn-success">Edit</Link>&nbsp;
+            <Link to={`/book/edit/${this.state.book._id}`} class="btn btn-success">Edit</Link>&nbsp;
             <button onClick={this.delete.bind(this, this.state.book._id)} class="btn btn-danger">Delete</button>
           </div>
         </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Reviews
+            </h3>
+          </div>
+          <div class="panel-body">
+            <ListReviews></ListReviews>
+ 
+          </div>
+        </div>        
       </div>
     );
   }

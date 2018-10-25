@@ -6,11 +6,18 @@ var bodyParser = require('body-parser');
 
 var book = require('./routes/book');
 var auth = require('./routes/auth');
+var bookReview = require('./routes/bookReview');
 var app = express();
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://192.168.99.100:32768/mern-crud'
+var mongodbdefaulthosturl='mongodb://localhost:27017/mern-crud';
+//var mongodblocalhosturl='mongodb://192.168.99.100:32768/mern-crud';
+var mongodburl = process.env.mongodburl!=null?process.env.mongodburl:mongodbdefaulthosturl ;
+console.log('process.env.mongodburl : ' + process.env.mongodburl);
+console.log('mongodburl : ' + mongodburl);
+
+mongoose.connect(mongodburl
               , {useNewUrlParser: true, promiseLibrary: require('bluebird') })
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
@@ -22,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/book', book);
 app.use('/api/auth', auth);
+app.use('/api/bookReview', bookReview);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

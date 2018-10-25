@@ -1,0 +1,34 @@
+https://next.json-generator.com/EJSdZ-_jB
+
+[
+    {
+      'repeat(2, 7)': {
+        
+     id: '{{guid()}}',
+    updated_date:  '{{moment(new Date()).format("DD-MM-YYYY HH:mm:ss:SSSZ")}}',
+    avarageRating: '{{floating(1, 5)}}',
+    reviewCount: '{{integer(1, 10)}}',
+    reviews: [
+  
+      {
+        'repeat(1, 5)': {
+        id: '{{guid()}}',
+        title: '{{lorem(3, "words")}}',
+        description: '{{lorem(10, "words")}}',
+        rating: '{{floating(1, 5)}}',
+        reviewBy: '{{firstName()}} {{surname()}}',
+        reviewDate: '{{moment(this.date()).format("DD-MM-YYYY HH:mm:ss:SSSZ")}}', 
+        updated_date: '{{moment(new Date()).format("DD-MM-YYYY HH:mm:ss:SSSZ")}}'
+        }
+      }
+    ],
+    book: {
+      id: '{{guid()}}',
+      title: '{{firstName()}} {{surname()}}',
+    }     
+        
+        
+   
+      }
+    }
+  ]

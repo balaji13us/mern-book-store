@@ -3,21 +3,21 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-class ListBooks extends Component {
+class ListReviews extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      bookReviews: []
     };
   }
 
   componentDidMount() {
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-    axios.get('/api/book')
+    axios.get('/api/bookReview/')
       .then(res => {
-        this.setState({ books: res.data });
-        console.log(this.state.books);
+        this.setState({ bookReviews: res.data });
+        console.log(this.state.bookReviews);
       })
       .catch((error) => {
         if(error.response.status === 401) {
@@ -35,17 +35,10 @@ class ListBooks extends Component {
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              BOOK CATALOG &nbsp;
+              Reviews &nbsp;
             </h3>
           </div>
           <div class="panel-body">
-            <h4>
-              <Link to="/book/create">
-                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true">
-                </span> 
-                Add Book
-              </Link>
-            </h4>
             <table class="table table-stripe">
               <thead>
                 <tr>
@@ -55,11 +48,11 @@ class ListBooks extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.books.map(book =>
+                {this.state.bookReviews.map(book =>
                   <tr>
-                    <td><Link to={`/book/show/${book._id}`}>{book.isbn}</Link></td>
-                    <td>{book.title}</td>
-                    <td>{book.author}</td>
+                    <td><Link to={`/book/show/${book._id}`}>{book.id}</Link></td>
+                    <td>{book.reviewCount}</td>
+                    <td>{book.avarageRating}</td>
                   </tr>
                 )}
               </tbody>
@@ -71,4 +64,4 @@ class ListBooks extends Component {
   }
 }
 
-export default ListBooks;
+export default ListReviews;

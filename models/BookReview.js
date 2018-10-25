@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
-
+var UUID = require('uuid');
 var BookReviewSchema = new mongoose.Schema({
-  id: String,
+  id: { type: String, default: UUID.v4 },
   updated_date: { type: Date, default: Date.now },
   avarageRating: Number,
   reviewCount: Number,
   reviews: [
     {
-      id: String,
+      id: { type: String, default: UUID.v4 },
       title: String,
       description: String,
       rating: Number,
@@ -17,7 +17,7 @@ var BookReviewSchema = new mongoose.Schema({
     }
   ],
   book: {
-    id: String,
+    id: { type: String, default: UUID.v4 },
     title: String
   }
 

@@ -1,0 +1,24 @@
+https://next.json-generator.com/EyRJg1OoB
+[
+  {
+    'repeat(5, 10)': {
+      
+  id: '{{guid()}}',
+  isbn: '{{integer(1, 99999999)}}, {{integer(1, 99999999)}}',
+  title: '{{firstName()}} {{surname()}}',
+  author: '{{firstName()}} {{surname()}}',
+  description: '{{lorem(15, "words")}}',
+  publisher: '{{company().toUpperCase()}}',
+  published_date: '{{moment(this.date()).format("DD-MM-YYYY HH:mm:ss:SSSZ")}}',        
+  updated_date: '{{moment(new Date()).format("DD-MM-YYYY HH:mm:ss:SSSZ")}}', 
+  category: '{{random("Comic", "Novel")}}',
+  genre: '{{random("Thriller", "Romantic", "Comedy")}}',
+  productDimension: '{{integer(1, 10)}}L {{integer(1, 10)}}H {{integer(1, 3)}}W',
+
+      
+      
+      
+ 
+    }
+  }
+]
