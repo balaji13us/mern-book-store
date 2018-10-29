@@ -14,52 +14,106 @@ class ListReviews extends Component {
 
   componentDidMount() {
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken');
-    axios.get('/api/bookReview/')
+    //console.log('componentDidMount ' + this.props.params.bookid);
+    console.log('txt ' + this.props.txt);
+    console.log('txt ' + this.props.bookid);
+
+
+    axios.get('/api/bookReview/' + this.props.bookid)
       .then(res => {
         this.setState({ bookReviews: res.data });
         console.log(this.state.bookReviews);
+
+        //console.log('data ' + this.state.bookReviews[0].reviews);
       })
       .catch((error) => {
-        if(error.response.status === 401) {
+        if (error.response.status === 401) {
           this.props.history.push("/login");
         }
-        else{
+        else {
           console.log(JSON.stringify(error.response));
         }
       });
-  }
+  };
+
 
   render() {
     return (
+
       <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              Reviews &nbsp;
-            </h3>
-          </div>
-          <div class="panel-body">
-            <table class="table table-stripe">
-              <thead>
-                <tr>
-                  <th>ISBN</th>
-                  <th>Title</th>
-                  <th>Author</th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.bookReviews.map(book =>
+
+        {
+          this.state && this.state.bookReviews && this.state.bookReviews.length > 0
+          &&
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                Review Summary&nbsp;
+              </h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-stripe">
+                <thead>
                   <tr>
-                    <td><Link to={`/book/show/${book._id}`}>{book.id}</Link></td>
-                    <td>{book.reviewCount}</td>
-                    <td>{book.avarageRating}</td>
+                    <th>id</th>
+                    <th>reviewCount</th>
+                    <th>avarageRating</th>
                   </tr>
-                )}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {this.state.bookReviews.map(book =>
+                    <tr>
+                      <td>{book.id}</td>
+                      <td>{book.reviewCount}</td>
+                      <td>{book.avarageRating}</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+
+            {this.state.bookReviews && this.state.bookReviews.length > 0 &&
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    Reviews&nbsp;
+              </h3>
+                </div>
+                <div class="panel-body">
+                  <table class="table table-stripe">
+                    <thead>
+                      <tr>
+                        <th>id</th>
+                        <th>title</th>
+                        <th>description</th>
+                        <th>reviewBy</th>
+                        <th>rating</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.state.bookReviews.map(bookReview =>
+                        bookReview.reviews.map(review =>
+                          <tr>
+                            <td>{review.id}</td>
+                            <td>{review.title}</td>
+                            <td>{review.description}</td>
+                            <td>{review.reviewBy}</td>
+                            <td>{review.rating}</td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            }
           </div>
-        </div>
+        }
+
       </div>
+
+
     );
   }
 }

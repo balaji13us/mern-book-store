@@ -12,7 +12,12 @@ var app = express();
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 var mongodbdefaulthosturl='mongodb://localhost:27017/mern-crud';
+
 //var mongodblocalhosturl='mongodb://192.168.99.100:32768/mern-crud';
+// configure correct mongodb url in  environment variable
+// mongodburl=mongodb://localhost:27017/mern-crud
+// if not confgured mongodbdefaulthosturl value will be used
+
 var mongodburl = process.env.mongodburl!=null?process.env.mongodburl:mongodbdefaulthosturl ;
 console.log('process.env.mongodburl : ' + process.env.mongodburl);
 console.log('mongodburl : ' + mongodburl);
@@ -20,7 +25,13 @@ console.log('mongodburl : ' + mongodburl);
 mongoose.connect(mongodburl
               , {useNewUrlParser: true, promiseLibrary: require('bluebird') })
   .then(() =>  console.log('connection succesful'))
-  .catch((err) => console.error(err));
+  .catch((err) => {
+    console.error('verify mongodburl');
+    console.log(' configure correct mongodb url in  environment variable ' 
+    + ' mongodburl=mongodb://localhost:27017/mern-crud ' 
+    + ' if not confgured mongodbdefaulthosturl value will be used ' );
+    console.error(err);
+  });
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

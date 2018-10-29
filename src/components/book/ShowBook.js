@@ -68,18 +68,12 @@ class Show extends Component {
             <button onClick={this.delete.bind(this, this.state.book._id)} class="btn btn-danger">Delete</button>
           </div>
         </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              Reviews
-            </h3>
-          </div>
-          <div class="panel-body">
-            <ListReviews></ListReviews>
- 
-          </div>
-        </div>        
+        {
+          this.state && this.state.book.id &&
+          <div >
+              <ListReviews txt="asdf" bookid={this.state.book.id}></ListReviews>
+          </div>    
+        }        
       </div>
     );
   }

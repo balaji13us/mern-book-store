@@ -5,7 +5,7 @@ var BookReview = require('../models/BookReview.js');
 var passport = require('passport');
 require('../config/passport')(passport);
 
-/* GET ALL BOOKS */
+/* GET ALL BOOKREVIEWS */
 router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {
@@ -18,16 +18,17 @@ router.get('/', passport.authenticate('jwt', { session: false}), function(req, r
   }
 });
 
-/* GET SINGLE BOOK BY ID */
+/* GET SINGLE BOOKREVIEW BY ID */
 router.get('/:id', function(req, res, next) {
- const id1 = '44296bdc-3478-4c4b-b340-c368708a3f42';
- console.log('test------------------');
- //req.params.id
-  BookReview.findById(id1, function (err, post) {
-    if (err) return next(err);
+  BookReview.find({'book.id':req.params.id}, function (err, post) {
+    if (err){ 
+      console.log('test------------------' + JSON.stringify(err));
+      return res.json(err);
+    }
     res.json(post);
   });
 });
+
 
 getToken = function (headers) {
   if (headers && headers.authorization) {
